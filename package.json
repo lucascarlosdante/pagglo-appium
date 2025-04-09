@@ -1,0 +1,17 @@
+{
+  "name": "loopiclub-robot",
+  "version": "1.0.0",
+  "description": "Testes Automatizados - LoopiClub",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lucas Carlos Dante",
+  "license": "ISC",
+  "dependencies": {
+    "appium": "^2.17.1"
+  },
+  "devDependencies": {
+    "appium-uiautomator2-driver": "^4.1.5"
+  }
+}
