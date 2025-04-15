@@ -3,8 +3,10 @@
 Library    AppiumLibrary
 
 *** Variables ***
-${LANGUAGE}    Portuguese (Brazil)
-&{USER1}    email=lucasinboxtest@gmail.com    senha=Senha1*
+${LANGUAGE}    Português (Brasil)
+# ${LANGUAGE}    Portuguese (Brazil)
+&{USER1}    email=lucasinboxtest@gmail.com    senha=Senha1*    name=Quentin Alves
+&{USER2}    email=lucasinboxtest@gmail.com    senha=Senha1*    name=Quentin Alves Novais
 
 *** Keywords ***
 Start session
@@ -20,21 +22,22 @@ Start session
 Select language
     Wait Until Element Is Visible    xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout
 
-    Wait Until Page Contains    Select a language
+    # Wait Until Page Contains    Select a language
+    Wait Until Page Contains    Selecione uma linguagem
     Wait Until Page Contains    ${LANGUAGE}
     Click Text                  ${LANGUAGE}
 
 logIn
     ${email}     Set Variable        xpath=//android.widget.EditText[@text="E-mail"]
-    Wait Until Element Is Visible    ${email}
-    Click Element                    ${email}
+    # Wait Until Element Is Visible    ${email}
+    # Click Element                    ${email}
     Input Text                       ${email}      ${USER1["email"]}
     
     ${senha}     Set Variable        xpath=//android.widget.EditText[@text="Senha"]
-    Wait Until Element Is Visible    ${senha}
-    Click Element                    ${senha}
+    # Wait Until Element Is Visible    ${senha}
+    # Click Element                    ${senha}
     Input Text                       ${senha}      ${USER1["senha"]}
 
     ${entrar}     Set Variable       xpath=//android.widget.TextView[@text="ENTRAR"]
-    Wait Until Element Is Visible    ${entrar}
+    # Wait Until Element Is Visible    ${entrar}
     Click Element                    ${entrar}
