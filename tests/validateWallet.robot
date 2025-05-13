@@ -31,7 +31,7 @@ Quando o usuário acessa o Ranking no app
     Esperar por      ${wallet_header}
 
 Então os dados exibidos devem estar corretos
-    Validate Wallet Page Texts
+    Validar texto da página "Wallet"
 
 # Close session  
 #     Close Application    

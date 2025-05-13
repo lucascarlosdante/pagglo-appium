@@ -1,97 +1,489 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-05-13T03:52:41.092700" rpa="false" schemaversion="5">
-<suite id="s1" name="Test Suite" source="C:\QAx\projects\loopiclub-robot\tests\test_suite.robot">
-<kw name="Setup Global" type="SETUP">
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-05-13T12:09:33.121154" rpa="false" schemaversion="5">
+<suite id="s1" name="allSuite on" source="C:\QAx\projects\loopiclub-robot\tests\allSuite_on.robot">
+<test id="s1-t1" name="Deve acessar todos os APKs da pasta" line="13">
+<kw name="Dado que os APKs estão disponíveis na pasta">
+<kw name="List Files In Directory" owner="OperatingSystem">
+<msg time="2025-05-13T12:09:33.315298" level="INFO" html="true">Listing contents of directory '&lt;a href="file://C:\QAx\projects\loopiclub-robot\app"&gt;C:\QAx\projects\loopiclub-robot\app&lt;/a&gt;'.</msg>
+<msg time="2025-05-13T12:09:33.315966" level="INFO">7 files:
+app-abapen-release.apk
+app-cbpa-release.apk
+app-jogosdosfamosos-release.apk
+app-keeper-release.apk
+app-loopiclub-release.apk
+app-loopilucaneta-release.apk
+app-unaspub-release.apk</msg>
+<msg time="2025-05-13T12:09:33.316056" level="INFO">${apk_files} = ['app-abapen-release.apk', 'app-cbpa-release.apk', 'app-jogosdosfamosos-release.apk', 'app-keeper-release.apk', 'app-loopiclub-release.apk', 'app-loopilucaneta-release.apk', 'app-unaspub-release.apk']</msg>
+<var>${apk_files}</var>
+<arg>${APK_FOLDER}</arg>
+<arg>pattern=*.apk</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<status status="PASS" start="2025-05-13T12:09:33.315125" elapsed="0.000956"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-13T12:09:33.316349" level="INFO">${apk_files} = ['app-abapen-release.apk', 'app-cbpa-release.apk', 'app-jogosdosfamosos-release.apk', 'app-keeper-release.apk', 'app-loopiclub-release.apk', 'app-loopilucaneta-release.apk', 'app-unaspub-release.apk']</msg>
+<arg>${apk_files}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-13T12:09:33.316196" elapsed="0.000191"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-05-13T12:09:33.316558" level="INFO">Length is 7.</msg>
+<msg time="2025-05-13T12:09:33.316614" level="INFO">${total_apks} = 7</msg>
+<var>${total_apks}</var>
+<arg>${apk_files}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-05-13T12:09:33.316467" elapsed="0.000166"/>
+</kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-05-13T03:52:41.123414" level="INFO">Configurando o ambiente antes de rodar os testes.</msg>
-<arg>Configurando o ambiente antes de rodar os testes.</arg>
+<msg time="2025-05-13T12:09:33.316855" level="INFO">Total de APKs encontrados: 7</msg>
+<arg>Total de APKs encontrados: ${total_apks}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-05-13T03:52:41.123314" elapsed="0.000148"/>
+<status status="PASS" start="2025-05-13T12:09:33.316712" elapsed="0.000184"/>
 </kw>
-<status status="PASS" start="2025-05-13T03:52:41.122991" elapsed="0.000542"/>
+<status status="PASS" start="2025-05-13T12:09:33.314413" elapsed="0.002533"/>
 </kw>
-<test id="s1-t1" name="Executar Todos Os Testes" line="7">
-<kw name="Executar Modificação no Usuário">
-<kw name="Run Process" owner="Process">
-<msg time="2025-05-13T03:52:41.125002" level="INFO">Starting process:
-robot tests/modifyUser.robot</msg>
-<msg time="2025-05-13T03:52:41.131266" level="INFO">Waiting for process to complete.</msg>
-<msg time="2025-05-13T03:53:41.929312" level="INFO">Process completed.</msg>
-<arg>robot</arg>
-<arg>tests/modifyUser.robot</arg>
-<arg>stdout=stdout.log</arg>
-<arg>stderr=stderr.log</arg>
-<doc>Runs a process and waits for it to complete.</doc>
-<status status="PASS" start="2025-05-13T03:52:41.124282" elapsed="60.805131"/>
+<kw name="Então abrir e fechar cada APK">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-05-13T12:09:33.317545" level="INFO">Length is 7.</msg>
+<arg>${apk_files}</arg>
+<arg>Nenhum APK encontrado na pasta '${APK_FOLDER}'</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-05-13T12:09:33.317409" elapsed="0.000173"/>
 </kw>
-<status status="PASS" start="2025-05-13T03:52:41.124105" elapsed="60.805398"/>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:09:33.317928" level="INFO">Abrindo: app-abapen-release.apk</msg>
+<arg>Abrindo: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:09:33.317835" elapsed="0.000127"/>
 </kw>
-<kw name="Executar Validação da Home">
-<kw name="Run Process" owner="Process">
-<msg time="2025-05-13T03:53:41.930926" level="INFO">Starting process:
-robot tests/validateHome.robot</msg>
-<msg time="2025-05-13T03:53:41.937023" level="INFO">Waiting for process to complete.</msg>
-<msg time="2025-05-13T03:54:23.925553" level="INFO">Process completed.</msg>
-<arg>robot</arg>
-<arg>tests/validateHome.robot</arg>
-<arg>stdout=stdout.log</arg>
-<arg>stderr=stderr.log</arg>
-<doc>Runs a process and waits for it to complete.</doc>
-<status status="PASS" start="2025-05-13T03:53:41.930046" elapsed="41.995608"/>
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=${PLATFORM_NAME}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>automationName=UIAutomator2</arg>
+<arg>app=${EXECDIR}/${APK_FOLDER}/${apk}</arg>
+<arg>udid=emulator-5554</arg>
+<arg>autoGrantPermissions=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2025-05-13T12:09:33.318033" elapsed="9.853924"/>
 </kw>
-<status status="PASS" start="2025-05-13T03:53:41.929807" elapsed="41.995981"/>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T12:09:44.276474" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</msg>
+<arg>xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T12:09:43.172090" elapsed="1.104450"/>
 </kw>
-<kw name="Executar Validação do Ranking">
-<kw name="Run Process" owner="Process">
-<msg time="2025-05-13T03:54:23.926990" level="INFO">Starting process:
-robot tests/validateRanking.robot</msg>
-<msg time="2025-05-13T03:54:23.932794" level="INFO">Waiting for process to complete.</msg>
-<msg time="2025-05-13T03:54:47.355506" level="INFO">Process completed.</msg>
-<arg>robot</arg>
-<arg>tests/validateRanking.robot</arg>
-<arg>stdout=stdout.log</arg>
-<arg>stderr=stderr.log</arg>
-<doc>Runs a process and waits for it to complete.</doc>
-<status status="PASS" start="2025-05-13T03:54:23.926289" elapsed="23.429331"/>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Selecione uma linguagem</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:09:44.276660" elapsed="2.165758"/>
 </kw>
-<status status="PASS" start="2025-05-13T03:54:23.926079" elapsed="23.429630"/>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>${LANGUAGE}</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:09:46.442572" elapsed="0.080922"/>
 </kw>
-<kw name="Executar Validação da Carteira">
-<kw name="Run Process" owner="Process">
-<msg time="2025-05-13T03:54:47.357649" level="INFO">Starting process:
-robot tests/validateWallet.robot</msg>
-<msg time="2025-05-13T03:54:47.366449" level="INFO">Waiting for process to complete.</msg>
-<msg time="2025-05-13T03:55:29.235746" level="INFO">Process completed.</msg>
-<arg>robot</arg>
-<arg>tests/validateWallet.robot</arg>
-<arg>stdout=stdout.log</arg>
-<arg>stderr=stderr.log</arg>
-<doc>Runs a process and waits for it to complete.</doc>
-<status status="PASS" start="2025-05-13T03:54:47.356433" elapsed="41.879467"/>
+<kw name="Click Text" owner="AppiumLibrary">
+<msg time="2025-05-13T12:09:47.518632" level="INFO">xpath criteria: //*[contains(@text,"Português (Brasil)")]</msg>
+<arg>${LANGUAGE}</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" start="2025-05-13T12:09:46.523622" elapsed="0.995096"/>
 </kw>
-<status status="PASS" start="2025-05-13T03:54:47.356067" elapsed="41.879927"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:09:47.518997" level="INFO">Fechando: app-abapen-release.apk</msg>
+<arg>Fechando: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:09:47.518862" elapsed="0.000173"/>
 </kw>
-<status status="PASS" start="2025-05-13T03:52:41.123608" elapsed="168.112601"/>
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" start="2025-05-13T12:09:47.519109" elapsed="0.882648"/>
+</kw>
+<var name="${apk}">app-abapen-release.apk</var>
+<status status="PASS" start="2025-05-13T12:09:33.317769" elapsed="15.084038"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:09:48.402276" level="INFO">Abrindo: app-cbpa-release.apk</msg>
+<arg>Abrindo: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:09:48.402105" elapsed="0.000214"/>
+</kw>
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=${PLATFORM_NAME}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>automationName=UIAutomator2</arg>
+<arg>app=${EXECDIR}/${APK_FOLDER}/${apk}</arg>
+<arg>udid=emulator-5554</arg>
+<arg>autoGrantPermissions=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2025-05-13T12:09:48.402401" elapsed="9.973786"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T12:09:59.418737" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</msg>
+<arg>xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T12:09:58.376424" elapsed="1.042392"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Selecione uma linguagem</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:09:59.418947" elapsed="2.121235"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>${LANGUAGE}</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:10:01.540310" elapsed="0.088250"/>
+</kw>
+<kw name="Click Text" owner="AppiumLibrary">
+<msg time="2025-05-13T12:10:02.648746" level="INFO">xpath criteria: //*[contains(@text,"Português (Brasil)")]</msg>
+<arg>${LANGUAGE}</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" start="2025-05-13T12:10:01.628683" elapsed="1.020129"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:10:02.649154" level="INFO">Fechando: app-cbpa-release.apk</msg>
+<arg>Fechando: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:10:02.649006" elapsed="0.000185"/>
+</kw>
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" start="2025-05-13T12:10:02.649270" elapsed="1.889754"/>
+</kw>
+<var name="${apk}">app-cbpa-release.apk</var>
+<status status="PASS" start="2025-05-13T12:09:48.401963" elapsed="16.137110"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:10:04.539406" level="INFO">Abrindo: app-jogosdosfamosos-release.apk</msg>
+<arg>Abrindo: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:10:04.539286" elapsed="0.000156"/>
+</kw>
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=${PLATFORM_NAME}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>automationName=UIAutomator2</arg>
+<arg>app=${EXECDIR}/${APK_FOLDER}/${apk}</arg>
+<arg>udid=emulator-5554</arg>
+<arg>autoGrantPermissions=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2025-05-13T12:10:04.539515" elapsed="9.485217"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T12:10:15.127209" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</msg>
+<arg>xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T12:10:14.024867" elapsed="1.102407"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Selecione uma linguagem</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:10:15.127392" elapsed="2.014562"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>${LANGUAGE}</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:10:17.142072" elapsed="0.088462"/>
+</kw>
+<kw name="Click Text" owner="AppiumLibrary">
+<msg time="2025-05-13T12:10:18.233818" level="INFO">xpath criteria: //*[contains(@text,"Português (Brasil)")]</msg>
+<arg>${LANGUAGE}</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" start="2025-05-13T12:10:17.230654" elapsed="1.003248"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:10:18.234228" level="INFO">Fechando: app-jogosdosfamosos-release.apk</msg>
+<arg>Fechando: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:10:18.234056" elapsed="0.000223"/>
+</kw>
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" start="2025-05-13T12:10:18.234380" elapsed="0.916529"/>
+</kw>
+<var name="${apk}">app-jogosdosfamosos-release.apk</var>
+<status status="PASS" start="2025-05-13T12:10:04.539198" elapsed="14.611761"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:10:19.151406" level="INFO">Abrindo: app-keeper-release.apk</msg>
+<arg>Abrindo: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:10:19.151269" elapsed="0.000200"/>
+</kw>
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=${PLATFORM_NAME}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>automationName=UIAutomator2</arg>
+<arg>app=${EXECDIR}/${APK_FOLDER}/${apk}</arg>
+<arg>udid=emulator-5554</arg>
+<arg>autoGrantPermissions=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2025-05-13T12:10:19.151549" elapsed="9.484439"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T12:10:29.882041" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</msg>
+<arg>xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T12:10:28.636123" elapsed="1.245989"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Selecione uma linguagem</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:10:29.882219" elapsed="1.696168"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>${LANGUAGE}</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:10:31.578507" elapsed="0.077922"/>
+</kw>
+<kw name="Click Text" owner="AppiumLibrary">
+<msg time="2025-05-13T12:10:32.639751" level="INFO">xpath criteria: //*[contains(@text,"Português (Brasil)")]</msg>
+<arg>${LANGUAGE}</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" start="2025-05-13T12:10:31.656560" elapsed="0.983254"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:10:32.640078" level="INFO">Fechando: app-keeper-release.apk</msg>
+<arg>Fechando: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:10:32.639928" elapsed="0.000188"/>
+</kw>
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" start="2025-05-13T12:10:32.640189" elapsed="1.021801"/>
+</kw>
+<var name="${apk}">app-keeper-release.apk</var>
+<status status="PASS" start="2025-05-13T12:10:19.151167" elapsed="14.510878"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:10:33.662390" level="INFO">Abrindo: app-loopiclub-release.apk</msg>
+<arg>Abrindo: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:10:33.662268" elapsed="0.000166"/>
+</kw>
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=${PLATFORM_NAME}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>automationName=UIAutomator2</arg>
+<arg>app=${EXECDIR}/${APK_FOLDER}/${apk}</arg>
+<arg>udid=emulator-5554</arg>
+<arg>autoGrantPermissions=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2025-05-13T12:10:33.662510" elapsed="9.461373"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T12:10:44.320492" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</msg>
+<arg>xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T12:10:43.124243" elapsed="1.196312"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Selecione uma linguagem</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:10:44.320666" elapsed="2.234759"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>${LANGUAGE}</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:10:46.555565" elapsed="0.090595"/>
+</kw>
+<kw name="Click Text" owner="AppiumLibrary">
+<msg time="2025-05-13T12:10:47.645905" level="INFO">xpath criteria: //*[contains(@text,"Português (Brasil)")]</msg>
+<arg>${LANGUAGE}</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" start="2025-05-13T12:10:46.646300" elapsed="0.999675"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:10:47.646213" level="INFO">Fechando: app-loopiclub-release.apk</msg>
+<arg>Fechando: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:10:47.646085" elapsed="0.000163"/>
+</kw>
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" start="2025-05-13T12:10:47.646319" elapsed="0.946455"/>
+</kw>
+<var name="${apk}">app-loopiclub-release.apk</var>
+<status status="PASS" start="2025-05-13T12:10:33.662180" elapsed="14.930663"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:10:48.593266" level="INFO">Abrindo: app-loopilucaneta-release.apk</msg>
+<arg>Abrindo: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:10:48.593130" elapsed="0.000190"/>
+</kw>
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=${PLATFORM_NAME}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>automationName=UIAutomator2</arg>
+<arg>app=${EXECDIR}/${APK_FOLDER}/${apk}</arg>
+<arg>udid=emulator-5554</arg>
+<arg>autoGrantPermissions=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2025-05-13T12:10:48.593397" elapsed="9.689674"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T12:10:59.861125" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</msg>
+<arg>xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T12:10:58.283229" elapsed="1.577973"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Selecione uma linguagem</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:10:59.861352" elapsed="1.296520"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>${LANGUAGE}</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:11:01.158042" elapsed="0.105858"/>
+</kw>
+<kw name="Click Text" owner="AppiumLibrary">
+<msg time="2025-05-13T12:11:02.254896" level="INFO">xpath criteria: //*[contains(@text,"Português (Brasil)")]</msg>
+<arg>${LANGUAGE}</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" start="2025-05-13T12:11:01.264030" elapsed="0.990928"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:11:02.255198" level="INFO">Fechando: app-loopilucaneta-release.apk</msg>
+<arg>Fechando: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:11:02.255068" elapsed="0.000166"/>
+</kw>
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" start="2025-05-13T12:11:02.255307" elapsed="0.991523"/>
+</kw>
+<var name="${apk}">app-loopilucaneta-release.apk</var>
+<status status="PASS" start="2025-05-13T12:10:48.593031" elapsed="14.653849"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:11:03.247216" level="INFO">Abrindo: app-unaspub-release.apk</msg>
+<arg>Abrindo: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:11:03.247094" elapsed="0.000160"/>
+</kw>
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=${PLATFORM_NAME}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>automationName=UIAutomator2</arg>
+<arg>app=${EXECDIR}/${APK_FOLDER}/${apk}</arg>
+<arg>udid=emulator-5554</arg>
+<arg>autoGrantPermissions=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2025-05-13T12:11:03.247356" elapsed="9.416855"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T12:11:13.845766" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</msg>
+<arg>xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T12:11:12.664350" elapsed="1.181503"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Selecione uma linguagem</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:11:13.846007" elapsed="2.046181"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>${LANGUAGE}</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T12:11:15.892310" elapsed="0.077043"/>
+</kw>
+<kw name="Click Text" owner="AppiumLibrary">
+<msg time="2025-05-13T12:11:16.937300" level="INFO">xpath criteria: //*[contains(@text,"Português (Brasil)")]</msg>
+<arg>${LANGUAGE}</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" start="2025-05-13T12:11:15.969473" elapsed="0.967889"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-13T12:11:16.937603" level="INFO">Fechando: app-unaspub-release.apk</msg>
+<arg>Fechando: ${apk}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-13T12:11:16.937474" elapsed="0.000163"/>
+</kw>
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" start="2025-05-13T12:11:16.937710" elapsed="0.953911"/>
+</kw>
+<var name="${apk}">app-unaspub-release.apk</var>
+<status status="PASS" start="2025-05-13T12:11:03.247004" elapsed="14.644701"/>
+</iter>
+<var>${apk}</var>
+<value>@{apk_files}</value>
+<status status="PASS" start="2025-05-13T12:09:33.317634" elapsed="104.574204"/>
+</for>
+<status status="PASS" start="2025-05-13T12:09:33.317235" elapsed="104.574737"/>
+</kw>
+<tag>bdd</tag>
+<status status="PASS" start="2025-05-13T12:09:33.313755" elapsed="104.578486"/>
 </test>
-<kw name="Teardown Global" type="TEARDOWN">
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-05-13T03:55:29.237259" level="INFO">Limpando o ambiente após a execução de todos os testes.</msg>
-<arg>Limpando o ambiente após a execução de todos os testes.</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-05-13T03:55:29.237161" elapsed="0.000140"/>
-</kw>
-<status status="PASS" start="2025-05-13T03:55:29.236993" elapsed="0.000356"/>
-</kw>
-<status status="PASS" start="2025-05-13T03:52:41.094047" elapsed="168.143328"/>
+<status status="PASS" start="2025-05-13T12:09:33.122578" elapsed="104.770366"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">bdd</stat>
 </tag>
 <suite>
-<stat name="Test Suite" id="s1" pass="1" fail="0" skip="0">Test Suite</stat>
+<stat name="allSuite on" id="s1" pass="1" fail="0" skip="0">allSuite on</stat>
 </suite>
 </statistics>
 <errors>

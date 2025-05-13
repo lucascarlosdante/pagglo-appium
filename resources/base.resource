@@ -251,5 +251,5 @@ Validar Dados User 1
     ${tiktok}     Get Text    ${field_tiktok}
     Should Be Equal    ${tiktok}     ${USER1["tiktok"]}
 
-Validate Wallet Page Texts
+Validar texto da página "Wallet"
     Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Participando"]
