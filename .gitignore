@@ -1,6 +1,7 @@
 node_modules
 *.apk
 /app
+/app_outros
 ./logs
 /logs
 logs

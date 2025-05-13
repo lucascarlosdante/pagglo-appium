@@ -5,8 +5,6 @@ Suite Setup    Set Appium Timeout    20s
 
 *** Variables ***
 
-${TEXT_VIEW}    xpath=//android.widget.TextView
-
 *** Test Cases ***
 
 Deve validar as informações da página "Home"
@@ -20,7 +18,7 @@ Deve validar as informações da página "Home"
 *** Keywords ***
 
 Dado que o app foi iniciado e o usuário está logado
-    Dado que o usuário iniciou a sessão no app
+    E que o usuário iniciou a sessão no app    loopiclub
     E o usuário seleciona o idioma
     Quando o usuário faz login
     Então a tela inicial do app é carregada corretamente

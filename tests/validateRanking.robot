@@ -22,7 +22,7 @@ Deve validar as informações da página "Ranking"
 *** Keywords ***
 
 Dado que o app foi iniciado e o usuário está logado
-    Dado que o usuário iniciou a sessão no app
+    E que o usuário iniciou a sessão no app    loopiclub
     E o usuário seleciona o idioma
     Quando o usuário faz login
     Então a tela inicial do app é carregada corretamente
@@ -32,4 +32,4 @@ Quando o usuário acessa o Ranking no app
     Esperar por      ${ranking_header}
 
 Então os dados exibidos devem estar corretos
-    Validar textos da página "Ranking"
+    Validar texto da página "Ranking"

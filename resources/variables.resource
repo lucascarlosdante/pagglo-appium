@@ -18,8 +18,9 @@ ${field_apelido}     xpath=//android.widget.EditText[6]
 ${field_instagram}   xpath=//android.widget.EditText[7]
 ${field_facebook}    xpath=//android.widget.EditText[8]
 ${field_tiktok}      xpath=//android.widget.EditText[9]
-${logo_homepage}      //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView
+${logo_homepage}     //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView
 
-${TEXT_VIEW}    xpath=//android.widget.TextView
+${TEXT_VIEW}         xpath=//android.widget.TextView
+# ${PERFIL_ITEM}       xpath=//android.widget.TextView
 
-${INSTANCE_COUNT}    9  # Quantidade de campos de texto em "Atualizar dados do usuário"
+# ${INSTANCE_COUNT}    9  # Quantidade de campos de texto em "Atualizar dados do usuário"

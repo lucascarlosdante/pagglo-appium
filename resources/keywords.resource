@@ -5,13 +5,14 @@ Resource    ../resources/variables.resource
 *** Variables ***
 
 *** Keywords ***
-Dado que o usuário iniciou a sessão no app
-    [Documentation]     Teste de abertura do app
+
+E que o usuário iniciou a sessão no app    
+    [Arguments]    ${app}
     Open Application    http://localhost:4723
     ...                 platformName=Android
     ...                 deviceName=Android Emulator
     ...                 automationName=UIAutomator2
-    ...                 app=${EXECDIR}/app/app-loopiclub-release.apk
+    ...                 app=${EXECDIR}/app/app-${app}-release.apk
     ...                 udid=emulator-5554
     ...                 autoGrantPermissions=true
 
@@ -37,7 +38,7 @@ Então a tela inicial do app é carregada corretamente
 
     Wait Until Element Is Visible    xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]
 
-Acessar Menu    
+Acessar Menu
     [Arguments]    ${menu_item}
 
     ${item_text}     Set Variable    ${TEXT_VIEW}\[@text="${menu_item}"\]
@@ -49,35 +50,17 @@ Esperar por
 
     Wait Until Element Is Visible    ${page_header}
 
-Navigate to
-    [Arguments]    ${menu_item}    ${checkout_perfil}    ${menu_data}
 
-    ${item_text}     Set Variable    xpath=//android.view.ViewGroup[@content-desc="${menu_item}"]
-    Wait Until Element Is Visible    ${item_text}
-    Click Element                    ${item_text}    
-
-    ${perfil_item}     Set Variable  xpath=//android.widget.TextView
-    Wait Until Element Is Visible    xpath=//android.view.View[@text="${checkout_perfil}"]
-    # Wait Until Element Is Visible    ${perfil_item}\[@text="${USER2["name"]} ${USER2["lastname"]}"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="${USER1["name"]} ${USER1["lastname"]}"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="${USER1["email"]}"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="Português (Brasil)"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="Fale conosco"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="Regulamento e Termos de uso"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="Carteirinha"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="Minhas Compras"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="Encerrar conta"]
-    Wait Until Element Is Visible    ${perfil_item}\[@text="Sair"]
+Acessar opção
+    [Arguments]        ${menu_data}   
     
     ${user_data}     Set Variable    xpath=//android.widget.TextView[@text="${menu_data}"]
     Wait Until Element Is Visible    ${user_data}
     Click Element                    ${user_data}
-    Wait Until Element Is Visible    xpath=//android.view.View[@text="Dados do Usuário"]     
 
-    ${user_data2}    Set Variable    xpath=//android.widget.EditText[@text="CPF"]
-    Wait Until Element Is Visible    ${user_data2}
 
-Wait For Multiple Text Fields
+Espera vários campos de inserção
+    [Arguments]        ${INSTANCE_COUNT}   
 
     FOR    ${index}    IN RANGE    0    ${INSTANCE_COUNT}
         ${xpath_locator}    Set Variable    xpath=//android.widget.EditText[${index + 1}]
@@ -213,14 +196,14 @@ Validar textos da página "Home"
     ${informacoes_suporte}    Get Text    ${TEXT_VIEW}\[@text="Informações e Suporte"]
     Should Be Equal                 ${informacoes_suporte}    Informações e Suporte
 
-Validar textos da página "Ranking"
+Validar texto da página "Wallet"
 
     Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Últimos 7 dias"]
     ${filter}     Get Text     ${TEXT_VIEW}\[@text="Últimos 7 dias"]
     Should Be Equal                 ${filter}     Últimos 7 dias
 
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Período"]
-    ${period}     Get Text     ${TEXT_VIEW}\[@text="Período"]
+    ${period}     Get Text     xpath=//android.widget.EditText[@text="Período"]
+    Wait Until Element Is Visible    xpath=//android.widget.EditText[@text="Período"]
     Should Be Equal                 ${period}     Período
 
     Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Aplicar"]
@@ -231,6 +214,24 @@ Validar textos da página "Ranking"
     ${history_title}        Get Text     ${TEXT_VIEW}\[@text="Histórico de transações"]
     Should Be Equal                 ${history_title}        Histórico de transações
 
+    Swipe  500  1500  500  500  800
 
-Validar texto da página "Wallet"
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Fim da lista. Não há mais transações."]
+    ${history_title}        Get Text     ${TEXT_VIEW}\[@text="Fim da lista. Não há mais transações."]
+    Should Be Equal                 ${history_title}        Fim da lista. Não há mais transações.
+
+Validar texto da página "Ranking"
     Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Participando"]
+
+Validar texto da página "Mais"
+
+    # Wait Until Element Is Visible    ${PERFIL_ITEM}\[@text="${USER2["name"]} ${USER2["lastname"]}"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="${USER1["name"]} ${USER1["lastname"]}"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="${USER1["email"]}"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Português (Brasil)"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Fale conosco"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Regulamento e Termos de uso"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Carteirinha"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Minhas Compras"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Encerrar conta"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Sair"]
