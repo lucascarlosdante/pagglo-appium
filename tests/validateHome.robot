@@ -1,6 +1,6 @@
 *** Settings ***
 
-Resource    ../resources/base.resource
+Resource    ../resources/keywords.resource
 Suite Setup    Set Appium Timeout    20s
 
 *** Variables ***

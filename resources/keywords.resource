@@ -1,28 +1,8 @@
 *** Settings ***
 
-Library    AppiumLibrary
+Resource    ../resources/variables.resource
 
 *** Variables ***
-
-# ${LANGUAGE}    Portuguese (Brazil)
-${LANGUAGE}    Português (Brasil)
-&{USER1}    email=lucasinboxtest@gmail.com    senha=Senha1*    name=Quentin     lastname=Alves    cpf=04547531102    telefone=(61) 98918-9189    apelido=QA    instagram=@insta    facebook=@face    tiktok=@tiktok
-&{USER2}    email=lucasinboxtest@gmail.com    senha=Senha1*    name=Quentin Alves    lastname=Novais    cpf=01234567890    telefone=61891998819    apelido=QA2    instagram=@insta2    facebook=@face2    tiktok=@tiktok2
-
-${field_cpf}         xpath=//android.widget.EditText[1]
-${field_name}        xpath=//android.widget.EditText[2]
-${field_lastname}    xpath=//android.widget.EditText[3]
-${field_email}       xpath=//android.widget.EditText[4]
-${field_telefone}    xpath=//android.widget.EditText[5]
-${field_apelido}     xpath=//android.widget.EditText[6]
-${field_instagram}   xpath=//android.widget.EditText[7]
-${field_facebook}    xpath=//android.widget.EditText[8]
-${field_tiktok}      xpath=//android.widget.EditText[9]
-${logo_homepage}      //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView
-
-${TEXT_VIEW}    xpath=//android.widget.TextView
-
-${INSTANCE_COUNT}    9  # Quantidade de campos de texto em "Atualizar dados do usuário"
 
 *** Keywords ***
 Dado que o usuário iniciou a sessão no app
@@ -57,58 +37,6 @@ Então a tela inicial do app é carregada corretamente
 
     Wait Until Element Is Visible    xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]
 
-Validar textos da página "Home"
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Bem-vindo,"]
-    ${bem_vindo}        Get Text     ${TEXT_VIEW}\[@text="Bem-vindo,"]
-    Should Be Equal                 ${bem_vindo}        Bem-vindo,
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Quentin Alves"]
-    ${nome_usuario}     Get Text     ${TEXT_VIEW}\[@text="Quentin Alves"]
-    Should Be Equal                 ${nome_usuario}     Quentin Alves
-
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Junte Loopis"]
-    ${junte_loopis}     Get Text     ${TEXT_VIEW}\[@text="Junte Loopis"]
-    Should Be Equal                 ${junte_loopis}     Junte Loopis
-
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Loopi Teams"]
-    ${loopi_teams}      Get Text     ${TEXT_VIEW}\[@text="Loopi Teams"]
-    Should Be Equal                 ${loopi_teams}      Loopi Teams
-
-    Swipe  500  1500  500  500  800
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Troque Loopis"]
-    ${troque_loopis}    Get Text     ${TEXT_VIEW}\[@text="Troque Loopis"]
-    Should Be Equal                 ${troque_loopis}    Troque Loopis
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Loopi Games"]
-    ${loopi_games}      Get Text     ${TEXT_VIEW}\[@text="Loopi Games"]
-    Should Be Equal                 ${loopi_games}      Loopi Games
-
-    Swipe  500  1500  500  250  800
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Ingressos & Eventos"]
-    ${ingressos_eventos}    Get Text    ${TEXT_VIEW}\[@text="Ingressos & Eventos"]
-    Should Be Equal                ${ingressos_eventos}    Ingressos & Eventos
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Loopi Store"]
-    ${loopi_store}      Get Text     ${TEXT_VIEW}\[@text="Loopi Store"]
-    Should Be Equal                 ${loopi_store}      Loopi Store
-
-    Swipe  500  1500  500  500  800
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Loopi Experiências"]
-    ${loopi_experiencias}    Get Text    ${TEXT_VIEW}\[@text="Loopi Experiências"]
-    Should Be Equal                 ${loopi_experiencias}    Loopi Experiências
-
-    Swipe  500  1500  500  500  800
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Informações e Suporte"]
-    ${informacoes_suporte}    Get Text    ${TEXT_VIEW}\[@text="Informações e Suporte"]
-    Should Be Equal                 ${informacoes_suporte}    Informações e Suporte
-
 Acessar Menu    
     [Arguments]    ${menu_item}
 
@@ -120,24 +48,6 @@ Esperar por
     [Arguments]    ${page_header}
 
     Wait Until Element Is Visible    ${page_header}
-
-Validar textos da página "Ranking"
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Últimos 7 dias"]
-    ${filter}     Get Text     ${TEXT_VIEW}\[@text="Últimos 7 dias"]
-    Should Be Equal                 ${filter}     Últimos 7 dias
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Período"]
-    ${period}     Get Text     ${TEXT_VIEW}\[@text="Período"]
-    Should Be Equal                 ${period}     Período
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Aplicar"]
-    ${filter_button}     Get Text     ${TEXT_VIEW}\[@text="Aplicar"]
-    Should Be Equal                 ${filter_button}     Aplicar
-
-    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Histórico de transações"]
-    ${history_title}        Get Text     ${TEXT_VIEW}\[@text="Histórico de transações"]
-    Should Be Equal                 ${history_title}        Histórico de transações
 
 Navigate to
     [Arguments]    ${menu_item}    ${checkout_perfil}    ${menu_data}
@@ -250,6 +160,77 @@ Validar Dados User 1
 
     ${tiktok}     Get Text    ${field_tiktok}
     Should Be Equal    ${tiktok}     ${USER1["tiktok"]}
+
+Validar textos da página "Home"
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Bem-vindo,"]
+    ${bem_vindo}        Get Text     ${TEXT_VIEW}\[@text="Bem-vindo,"]
+    Should Be Equal                 ${bem_vindo}        Bem-vindo,
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Quentin Alves"]
+    ${nome_usuario}     Get Text     ${TEXT_VIEW}\[@text="Quentin Alves"]
+    Should Be Equal                 ${nome_usuario}     Quentin Alves
+
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Junte Loopis"]
+    ${junte_loopis}     Get Text     ${TEXT_VIEW}\[@text="Junte Loopis"]
+    Should Be Equal                 ${junte_loopis}     Junte Loopis
+
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Loopi Teams"]
+    ${loopi_teams}      Get Text     ${TEXT_VIEW}\[@text="Loopi Teams"]
+    Should Be Equal                 ${loopi_teams}      Loopi Teams
+
+    Swipe  500  1500  500  500  800
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Troque Loopis"]
+    ${troque_loopis}    Get Text     ${TEXT_VIEW}\[@text="Troque Loopis"]
+    Should Be Equal                 ${troque_loopis}    Troque Loopis
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Loopi Games"]
+    ${loopi_games}      Get Text     ${TEXT_VIEW}\[@text="Loopi Games"]
+    Should Be Equal                 ${loopi_games}      Loopi Games
+
+    Swipe  500  1500  500  250  800
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Ingressos & Eventos"]
+    ${ingressos_eventos}    Get Text    ${TEXT_VIEW}\[@text="Ingressos & Eventos"]
+    Should Be Equal                ${ingressos_eventos}    Ingressos & Eventos
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Loopi Store"]
+    ${loopi_store}      Get Text     ${TEXT_VIEW}\[@text="Loopi Store"]
+    Should Be Equal                 ${loopi_store}      Loopi Store
+
+    Swipe  500  1500  500  500  800
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Loopi Experiências"]
+    ${loopi_experiencias}    Get Text    ${TEXT_VIEW}\[@text="Loopi Experiências"]
+    Should Be Equal                 ${loopi_experiencias}    Loopi Experiências
+
+    Swipe  500  1500  500  500  800
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Informações e Suporte"]
+    ${informacoes_suporte}    Get Text    ${TEXT_VIEW}\[@text="Informações e Suporte"]
+    Should Be Equal                 ${informacoes_suporte}    Informações e Suporte
+
+Validar textos da página "Ranking"
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Últimos 7 dias"]
+    ${filter}     Get Text     ${TEXT_VIEW}\[@text="Últimos 7 dias"]
+    Should Be Equal                 ${filter}     Últimos 7 dias
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Período"]
+    ${period}     Get Text     ${TEXT_VIEW}\[@text="Período"]
+    Should Be Equal                 ${period}     Período
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Aplicar"]
+    ${filter_button}     Get Text     ${TEXT_VIEW}\[@text="Aplicar"]
+    Should Be Equal                 ${filter_button}     Aplicar
+
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Histórico de transações"]
+    ${history_title}        Get Text     ${TEXT_VIEW}\[@text="Histórico de transações"]
+    Should Be Equal                 ${history_title}        Histórico de transações
+
 
 Validar texto da página "Wallet"
     Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Participando"]
