@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-05-13T01:41:38.586690" rpa="false" schemaversion="5">
+<suite id="s1" name="validateRanking" source="C:\QAx\projects\loopiclub-robot\tests\validateRanking.robot">
+<kw name="Set Appium Timeout" owner="AppiumLibrary" type="SETUP">
+<arg>20s</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" start="2025-05-13T01:41:38.767855" elapsed="0.000180"/>
+</kw>
+<test id="s1-t1" name="Deve validar as informações da página &quot;Ranking&quot;" line="14">
+<kw name="Dado que o app foi iniciado e o usuário está logado">
+<kw name="Start session" owner="base">
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=Android</arg>
+<arg>deviceName=Android Emulator</arg>
+<arg>automationName=UIAutomator2</arg>
+<arg>app=${EXECDIR}/app/app-loopiclub-release.apk</arg>
+<arg>udid=emulator-5554</arg>
+<arg>autoGrantPermissions=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2025-05-13T01:41:38.768984" elapsed="9.887881"/>
+</kw>
+<doc>Teste de abertura do app</doc>
+<status status="PASS" start="2025-05-13T01:41:38.768820" elapsed="9.888174"/>
+</kw>
+<kw name="Select language" owner="base">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T01:41:49.744396" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</msg>
+<arg>xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T01:41:48.657477" elapsed="1.087055"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Selecione uma linguagem</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T01:41:49.744724" elapsed="2.556990"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>${LANGUAGE}</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2025-05-13T01:41:52.301837" elapsed="0.079995"/>
+</kw>
+<kw name="Click Text" owner="AppiumLibrary">
+<msg time="2025-05-13T01:41:52.584278" level="INFO">xpath criteria: //*[contains(@text,"Português (Brasil)")]</msg>
+<arg>${LANGUAGE}</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" start="2025-05-13T01:41:52.381949" elapsed="0.202396"/>
+</kw>
+<status status="PASS" start="2025-05-13T01:41:48.657172" elapsed="3.927239"/>
+</kw>
+<kw name="logIn" owner="base">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-13T01:41:52.584924" level="INFO">${email} = xpath=//android.widget.EditText[@text="E-mail"]</msg>
+<var>${email}</var>
+<arg>xpath=//android.widget.EditText[@text="E-mail"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-13T01:41:52.584800" elapsed="0.000148"/>
+</kw>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2025-05-13T01:41:52.586249" level="INFO">Typing text 'lucasinboxtest@gmail.com' into text field 'xpath=//android.widget.EditText[@text="E-mail"]'</msg>
+<msg time="2025-05-13T01:41:53.960041" level="INFO">xpath criteria: //android.widget.EditText[@text="E-mail"]</msg>
+<arg>${email}</arg>
+<arg>${USER1["email"]}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="PASS" start="2025-05-13T01:41:52.585024" elapsed="1.375092"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-13T01:41:53.960455" level="INFO">${senha} = xpath=//android.widget.EditText[@text="Senha"]</msg>
+<var>${senha}</var>
+<arg>xpath=//android.widget.EditText[@text="Senha"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-13T01:41:53.960251" elapsed="0.000242"/>
+</kw>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2025-05-13T01:41:53.961800" level="INFO">Typing text 'Senha1*' into text field 'xpath=//android.widget.EditText[@text="Senha"]'</msg>
+<msg time="2025-05-13T01:41:55.088161" level="INFO">xpath criteria: //android.widget.EditText[@text="Senha"]</msg>
+<arg>${senha}</arg>
+<arg>${USER1["senha"]}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="PASS" start="2025-05-13T01:41:53.960576" elapsed="1.127691"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-13T01:41:55.088525" level="INFO">${entrar} = xpath=//android.widget.TextView[@text="ENTRAR"]</msg>
+<var>${entrar}</var>
+<arg>xpath=//android.widget.TextView[@text="ENTRAR"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-13T01:41:55.088392" elapsed="0.000154"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-05-13T01:41:55.089676" level="INFO">Clicking element 'xpath=//android.widget.TextView[@text="ENTRAR"]'.</msg>
+<msg time="2025-05-13T01:41:56.254559" level="INFO">xpath criteria: //android.widget.TextView[@text="ENTRAR"]</msg>
+<arg>${entrar}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-05-13T01:41:55.088622" elapsed="1.166041"/>
+</kw>
+<status status="PASS" start="2025-05-13T01:41:52.584544" elapsed="3.670225"/>
+</kw>
+<status status="PASS" start="2025-05-13T01:41:38.768611" elapsed="17.486226"/>
+</kw>
+<kw name="Quando o usuário acessa o Ranking no app">
+<kw name="Acessar Menu">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-13T01:41:56.256530" level="INFO">${item_text} = xpath=//android.widget.TextView[@text="Ranking"]</msg>
+<var>${item_text}</var>
+<arg>${TEXT_VIEW}\[@text="${menu_item}"\]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-13T01:41:56.256027" elapsed="0.000561"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T01:42:01.114000" level="INFO">xpath criteria: //android.widget.TextView[@text="Ranking"]
+xpath criteria: //android.widget.TextView[@text="Ranking"]
+xpath criteria: //android.widget.TextView[@text="Ranking"]
+xpath criteria: //android.widget.TextView[@text="Ranking"]
+xpath criteria: //android.widget.TextView[@text="Ranking"]
+xpath criteria: //android.widget.TextView[@text="Ranking"]
+xpath criteria: //android.widget.TextView[@text="Ranking"]</msg>
+<arg>${item_text}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T01:41:56.256784" elapsed="4.857306"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-05-13T01:42:01.115678" level="INFO">Clicking element 'xpath=//android.widget.TextView[@text="Ranking"]'.</msg>
+<msg time="2025-05-13T01:42:01.521200" level="INFO">xpath criteria: //android.widget.TextView[@text="Ranking"]</msg>
+<arg>${item_text}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-05-13T01:42:01.114240" elapsed="0.407046"/>
+</kw>
+<arg>Ranking</arg>
+<status status="PASS" start="2025-05-13T01:41:56.255596" elapsed="5.265793"/>
+</kw>
+<kw name="Esperar por">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T01:42:02.305420" level="INFO">xpath criteria: //android.view.View[@text="Ranking"]
+xpath criteria: //android.view.View[@text="Ranking"]</msg>
+<arg>${page_header}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T01:42:01.521964" elapsed="0.783521"/>
+</kw>
+<arg>${ranking_header}</arg>
+<status status="PASS" start="2025-05-13T01:42:01.521591" elapsed="0.784076"/>
+</kw>
+<status status="PASS" start="2025-05-13T01:41:56.255102" elapsed="6.050615"/>
+</kw>
+<kw name="Então os dados exibidos devem estar corretos">
+<kw name="Validate Ranking Page Texts">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-05-13T01:42:04.521869" level="INFO">xpath criteria: //android.widget.TextView[@text="Participando"]
+xpath criteria: //android.widget.TextView[@text="Participando"]
+xpath criteria: //android.widget.TextView[@text="Participando"]
+xpath criteria: //android.widget.TextView[@text="Participando"]</msg>
+<arg>${TEXT_VIEW}\[@text="Participando"]</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-05-13T01:42:02.306223" elapsed="2.215709"/>
+</kw>
+<kw name="Get Text" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-05-13T01:42:04.771465" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.getScreenshot (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\screenshot.js:42:5)</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-05-13T01:42:04.758974" elapsed="0.019236">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.getScreenshot (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\screenshot.js:42:5)</status>
+</kw>
+<msg time="2025-05-13T01:42:04.779784" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.getScreenshot (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\screenshot.js:42:5)</msg>
+<msg time="2025-05-13T01:42:04.780025" level="INFO">xpath criteria: //android.widget.TextView[@text="Participando"]</msg>
+<msg time="2025-05-13T01:42:04.780125" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\find.js:40:5)
+    at doFind (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:47:17)
+    at wrappedCondFn (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:141:14)
+    at spin (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:219:20)
+    at waitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElements (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:79:12)</msg>
+<var>${bem_vindo}</var>
+<arg>${TEXT_VIEW}\[@text="Participando"]</arg>
+<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
+<status status="FAIL" start="2025-05-13T01:42:04.522038" elapsed="0.259849">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\find.js:40:5)
+    at doFind (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:47:17)
+    at wrappedCondFn (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:141:14)
+    at spin (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:219:20)
+    at waitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElements (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:79:12)</status>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${bem_vindo}</arg>
+<arg>Participando</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-05-13T01:42:04.782177" elapsed="0.000036"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<arg>${TEXT_VIEW}\[@text="Outros"]</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="NOT RUN" start="2025-05-13T01:42:04.782307" elapsed="0.000020"/>
+</kw>
+<kw name="Get Text" owner="AppiumLibrary">
+<var>${nome_usuario}</var>
+<arg>${TEXT_VIEW}\[@text="Outros"]</arg>
+<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
+<status status="NOT RUN" start="2025-05-13T01:42:04.782394" elapsed="0.000015"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${nome_usuario}</arg>
+<arg>Outros</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-05-13T01:42:04.782475" elapsed="0.000015"/>
+</kw>
+<status status="FAIL" start="2025-05-13T01:42:02.306042" elapsed="2.476611">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\find.js:40:5)
+    at doFind (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:47:17)
+    at wrappedCondFn (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:141:14)
+    at spin (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:219:20)
+    at waitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElements (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:79:12)</status>
+</kw>
+<status status="FAIL" start="2025-05-13T01:42:02.305831" elapsed="2.476990">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\find.js:40:5)
+    at doFind (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:47:17)
+    at wrappedCondFn (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:141:14)
+    at spin (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:219:20)
+    at waitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElements (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:79:12)</status>
+</kw>
+<tag>bdd</tag>
+<status status="FAIL" start="2025-05-13T01:41:38.768149" elapsed="26.014907">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\find.js:40:5)
+    at doFind (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:47:17)
+    at wrappedCondFn (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:141:14)
+    at spin (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:219:20)
+    at waitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\asyncbox\lib\asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElements (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:79:12)</status>
+</test>
+<status status="FAIL" start="2025-05-13T01:41:38.588043" elapsed="26.195669"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">bdd</stat>
+</tag>
+<suite>
+<stat name="validateRanking" id="s1" pass="0" fail="1" skip="0">validateRanking</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-13T01:42:04.779784" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.getScreenshot (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\screenshot.js:42:5)</msg>
+</errors>
+</robot>
