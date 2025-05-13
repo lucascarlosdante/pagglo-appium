@@ -1,6 +1,0 @@
-[ WARN ] Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-Stacktrace:
-UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-    at UIA2Proxy.command (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:359:13)
-    at processTicksAndRejections (node:internal/process/task_queues:105:5)
-    at AndroidUiautomator2Driver.getScreenshot (C:\QAx\projects\loopiclub-robot\node_modules\appium-uiautomator2-driver\lib\commands\screenshot.js:42:5)

@@ -3,16 +3,14 @@
 Resource    ../resources/base.resource
 
 *** Variables ***
-${LANGUAGE}    Portuguese (Brazil)
-&{USER1}    email=lucasinboxtest@gmail.com    senha=Senha1*
 
 *** Test Cases ***
 
-Deve realizar o logIn
-
-    Start session
-    Select language
-    logIn
+Dado que o app está aberto
+    Dado que o usuário iniciou a sessão no app
+    E o usuário seleciona o idioma
+    Quando o usuário faz login
+    Então a tela inicial do app é carregada corretamente
     
 # Close session  
 #     Close Application    
