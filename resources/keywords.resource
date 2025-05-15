@@ -6,30 +6,82 @@ Resource    ../resources/variables.resource
 
 *** Keywords ***
 
+Dado que os APKs estão disponíveis na pasta
+    ${apk_files}=    List Files In Directory    ${APK_FOLDER}    pattern=*.apk
+    Set Suite Variable    ${apk_files}
+    ${total_apks}=    Get Length    ${apk_files}
+    Log    Total de APKs encontrados: ${total_apks}
+
+Então abrir e fazer login em cada APK
+
+    Should Not Be Empty    ${apk_files}    Nenhum APK encontrado na pasta '${APK_FOLDER}'
+
+    FOR    ${apk}    IN    @{apk_files}
+        Log    Abrindo: ${apk}
+
+        E que o usuário iniciou a sessão nos apps da pasta    ${APK_FOLDER}    ${apk}
+
+        Wait Until Element Is Visible    xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout
+        
+        E o usuário seleciona o idioma    ptBr
+        
+        Sleep    2s
+
+        Quando o usuário faz login com o usuário    USER1
+
+        Então a tela inicial do app é carregada corretamente
+
+        Log    Fechando: ${apk}
+        Close Application
+
+    END
+
 E que o usuário iniciou a sessão no app    
     [Arguments]    ${app}
     Open Application    http://localhost:4723
-    ...                 platformName=Android
-    ...                 deviceName=Android Emulator
+    ...                 platformName=${PLATFORM_NAME}
+    ...                 deviceName=${DEVICE_NAME}
     ...                 automationName=UIAutomator2
     ...                 app=${EXECDIR}/app/app-${app}-release.apk
     ...                 udid=emulator-5554
     ...                 autoGrantPermissions=true
 
+E que o usuário iniciou a sessão nos apps da pasta
+    [Arguments]    ${APKS_FOLDER}    ${app}
+    Open Application    http://localhost:4723
+    ...                 platformName=${PLATFORM_NAME}
+    ...                 deviceName=${DEVICE_NAME}
+    ...                 automationName=UIAutomator2
+    ...                 app=${EXECDIR}/${APKS_FOLDER}/${app}
+    ...                 udid=emulator-5554
+    ...                 autoGrantPermissions=true
+
+# E que o usuário iniciou a sessão nos apps da pasta    #ATUAL QUE FUNCIONA
+#     [Arguments]    ${APKS_FOLDER}    ${app}
+#     Open Application    http://localhost:4723
+#     ...                 platformName=${PLATFORM_NAME}
+#     ...                 deviceName=${DEVICE_NAME}
+#     ...                 automationName=UIAutomator2
+#     ...                 app=${EXECDIR}/${APKS_FOLDER}/${app}
+#     ...                 udid=emulator-5554
+#     ...                 autoGrantPermissions=true
+
 E o usuário seleciona o idioma
+    [Arguments]    ${language_choose}
+
     Wait Until Element Is Visible    xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout
 
-    # Wait Until Page Contains    Select a language
-    Wait Until Page Contains    Selecione uma linguagem
-    Wait Until Page Contains    ${LANGUAGE}
-    Click Text                  ${LANGUAGE}
+    Wait Until Page Contains    ${LANGUAGE['${language_choose}']['text']}
+    Wait Until Page Contains    ${LANGUAGE['${language_choose}']['idioma']}
+    Click Text                  ${LANGUAGE['${language_choose}']['idioma']}
 
-Quando o usuário faz login
+Quando o usuário faz login com o usuário
+    [Arguments]    ${user_choose}
     ${email}     Set Variable        xpath=//android.widget.EditText[@text="E-mail"]
-    Input Text                       ${email}      ${USER1["email"]}
+    Input Text                       ${email}      ${USER['${user_choose}']['email']}
     
     ${senha}     Set Variable        xpath=//android.widget.EditText[@text="Senha"]
-    Input Text                       ${senha}      ${USER1["senha"]}
+    Input Text                       ${senha}      ${USER['${user_choose}']['senha']}
 
     ${entrar}     Set Variable       xpath=//android.widget.TextView[@text="ENTRAR"]
     Click Element                    ${entrar}
@@ -37,6 +89,7 @@ Quando o usuário faz login
 Então a tela inicial do app é carregada corretamente
 
     Wait Until Element Is Visible    xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]
+    Wait Until Element Is Visible    ${TEXT_VIEW}\[@text="Bem-vindo,"]
 
 Acessar Menu
     [Arguments]    ${menu_item}
